@@ -1,0 +1,78 @@
+import { useState } from "react";
+
+import React from "react";
+import { useLoader } from "@react-three/fiber";
+import * as THREE from "three";
+
+export const useTextureLoader = () => {
+  const [
+    bilgewater_highlight,
+    cloud,
+    demacia_highlight,
+    demacia_city_landmark,
+    demacia_hover,
+    fog,
+    freljord_highlight,
+    frostguard,
+    immortal_bastion,
+    ionia_highlight,
+    ixaocan,
+    ixtal_highlight,
+    mount_targon,
+    noxus_highlight,
+    placidium,
+    shadow_isles_highlight,
+    shurima_highlight,
+    sun_disc,
+    targon_highlight,
+    terrain_z1,
+    the_void,
+  ] = useLoader(THREE.TextureLoader, [
+    "texture/bilgewater_highlight.png",
+    "texture/clouds.jpg",
+    "texture/demacia_highlight.png",
+    "texture/demacia-city-landmark.jpg",
+    "texture/demacia-hover.png",
+    "texture/fog.jpg",
+    "texture/freljord_highlight.png",
+    "texture/frostguard.jpg",
+    "texture/immortal-bastion.jpg",
+    "texture/ionia_highlight.png",
+    "texture/ixaocan.png",
+    "texture/ixtal_highlight.png",
+    "texture/mount-targon.png",
+    "texture/noxus_highlight.png",
+    "texture/placidium.png",
+    "texture/shadow-isles_highlight.png",
+    "texture/shurima_highlight.png",
+    "texture/sun-disc.jpg",
+    "texture/targon_highlight.png",
+    "texture/terrain_z1.jpg",
+    "texture/the-void.jpg",
+  ]);
+  return {
+    texture: {
+      bilgewater_highlight,
+      cloud,
+      demacia_highlight,
+      demacia_city_landmark,
+      demacia_hover,
+      fog,
+      freljord_highlight,
+      frostguard,
+      immortal_bastion,
+      ionia_highlight,
+      ixaocan,
+      ixtal_highlight,
+      mount_targon,
+      noxus_highlight,
+      placidium,
+      shadow_isles_highlight,
+      shurima_highlight,
+      sun_disc,
+      targon_highlight,
+      terrain_z1,
+      the_void,
+    },
+  };
+};

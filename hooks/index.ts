@@ -1,4 +1,4 @@
-export * from "./useAudioLoader";
+export * from "./useAudioPlayer";
 export * from "./useMaskLoader";
 export * from "./useObjectLoader";
 export * from "./useTextureLoader";

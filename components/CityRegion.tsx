@@ -3,9 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { useMaskLoader } from "../hooks";
+import { useAudioPlayer, useMaskLoader } from "../hooks";
 import { meshBounds } from "@react-three/drei";
-
 interface Props {
   badge: THREE.Texture;
   badge_hover: THREE.Texture;
@@ -16,7 +15,7 @@ interface Props {
   rotation?: any;
 }
 
-export const CityObject = ({
+export const CityRegion = ({
   badge,
   badge_hover,
   highlight,
@@ -27,20 +26,11 @@ export const CityObject = ({
 }: Props) => {
   const [isHover, setIsHover] = useState<boolean>(false);
   const mesh = useRef<any>();
-  // const icreaseOpacity = () => {
-  //   while (mesh && mesh?.current.opacity <= 0.7) {
-  //     mesh.current.opacity += 0.05;
-  //   }
-  // };
-  // const decreaseOpacity = () => {
-  //   while (mesh && mesh?.current.opacity >= 0) {
-  //     mesh.current.opacity -= 0.05;
-  //   }
-  // };
-
+  const { play_hover_region, play_ui_region_click, play_trans_zoom } =
+    useAudioPlayer();
   useFrame(() => {
     if (isHover && highlight && mesh?.current.opacity <= 0.8) {
-      mesh.current.opacity += 0.08;
+      mesh.current.opacity += 0.09;
     } else if (!isHover && highlight && mesh?.current.opacity >= 0) {
       mesh.current.opacity -= 0.08;
     }
@@ -55,7 +45,11 @@ export const CityObject = ({
           <sprite
             onPointerOver={(e) => {
               setIsHover(true);
-              // icreaseOpacity();
+              play_hover_region();
+            }}
+            onClick={(e) => {
+              play_ui_region_click();
+              play_trans_zoom();
             }}
             scale={scale}
             position={position}
@@ -68,7 +62,9 @@ export const CityObject = ({
             <sprite
               onPointerOut={(e) => {
                 setIsHover(false);
-                // decreaseOpacity();
+              }}
+              onClick={(e) => {
+                play_ui_region_click();
               }}
               scale={scale}
               position={position}

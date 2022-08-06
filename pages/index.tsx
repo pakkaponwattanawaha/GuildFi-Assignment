@@ -13,22 +13,28 @@ import { Water } from "three/examples/jsm/objects/Water.js";
 import { TerrainPlane } from "../components/TerrainPlane";
 import { LoadingSuspense } from "../components/LoadingSuspense";
 import { ObjectModelOverlay } from "../components/ObjectModelOverlay";
+import { CityRegionOverlay } from "../components/CityRegionOverlay";
 
 function Fog() {
+  const ref = useRef();
+  const [cloud, cloud_texture] = useLoader(THREE.TextureLoader, [
+    "https://rawcdn.githack.com/pmndrs/drei-assets/9225a9f1fbd449d9411125c2f419b843d0308c9f/cloud.png",
+    "texture/clouds.jpg",
+  ]);
   return (
-    <Cloud position={[0, 2, 0]} speed={0.2} opacity={0.25} />
-    // <mesh ref={ref} rotation={[-Math.PI / 2, 0, 0]}>
-    //   <planeBufferGeometry attach="geometry" args={[18, 18, 1024, 1024]} />
-    //   <meshLambertMaterial map={fog} transparent={true} />
-    //   {/* <meshStandardMaterial
-    //     map={terrain}
-    //     displacementMap={terrain_depth}
-    //     displacementScale={1}
-    //     metalnessMap={ocean}
-    //     metalness={2.25}
-    //     fog={true}
-    //   /> */}
-    // </mesh>
+    <mesh rotation={[-Math.PI / 2, 0, 0]}>
+      {/* <planeBufferGeometry attach="geometry" args={[12, 12, 1024, 1024]} /> */}
+      <Cloud width={12} position={[0, 3, 0]} speed={0.2} opacity={1.25} />
+      {/* <meshLambertMaterial map={fog} transparent={true} /> */}
+      {/* <meshStandardMaterial
+        map={texture.terrain_z1}
+        displacementMap={mask.depth_z1}
+        displacementScale={1}
+        metalnessMap={mask.ocean_z1}
+        metalness={2.25}
+        fog={true}
+      /> */}
+    </mesh>
   );
 }
 
@@ -51,11 +57,13 @@ const Home: NextPage = () => {
             }}
           />
           <Stars />
-          <ambientLight intensity={0.5} />
+          <ambientLight intensity={0.7} />
           {/* <spotLight position={[10, 15, 3]} angle={0.25} /> */}
           {/* <pointLight intensity={0.5} position={[0, 0, 1]} /> */}
           {/* <Fog /> */}
           {/* <Ocean /> */}
+          {/* <CityObject /> */}
+          <CityRegionOverlay />
           <ObjectModelOverlay />
           <TerrainPlane />
         </Canvas>

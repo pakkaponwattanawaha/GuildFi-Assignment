@@ -3,7 +3,11 @@ import { objectDetails } from "../constant";
 import { useObjectLoader, useTextureLoader } from "../hooks";
 import { ObjectModel } from "./ObjectModel";
 import * as THREE from "three";
-export const ObjectModelOverlay = () => {
+interface Props {
+  isShowObject: boolean;
+}
+export const ObjectModelOverlay = ({ isShowObject }: Props) => {
+  //appear when tilt more than around 45deg
   const { texture } = useTextureLoader();
   const { obj } = useObjectLoader();
   return (
@@ -16,6 +20,7 @@ export const ObjectModelOverlay = () => {
             texture={texture[model.name as keyof object]}
             position={model.position}
             scale={model.scale}
+            isShowObject={isShowObject}
             rotation={model.rotation}
           />
         );

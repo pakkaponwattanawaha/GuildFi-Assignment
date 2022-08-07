@@ -8,7 +8,7 @@ export const TerrainPlane = () => {
   const { texture } = useTextureLoader();
   const { mask } = useMaskLoader();
   return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]}>
+    <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       <planeBufferGeometry attach="geometry" args={[18, 18, 1024, 1024]} />
       {/* <meshLambertMaterial map={fog} transparent={true} /> */}
       <meshStandardMaterial

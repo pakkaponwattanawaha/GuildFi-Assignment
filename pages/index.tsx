@@ -4,16 +4,18 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { Cloud, OrbitControls, Stars } from "@react-three/drei";
+import { Cloud, OrbitControls, Stars, useAnimations } from "@react-three/drei";
 import { Physics, usePlane, useBox } from "@react-three/cannon";
 import * as THREE from "three";
 import { Mesh, PlaneGeometry } from "three";
-import { Suspense, useMemo, useRef } from "react";
+import { PerspectiveCamera } from "@react-three/drei";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Water } from "three/examples/jsm/objects/Water.js";
 import { TerrainPlane } from "../components/TerrainPlane";
 import { LoadingSuspense } from "../components/LoadingSuspense";
 import { ObjectModelOverlay } from "../components/ObjectModelOverlay";
 import { CityRegionOverlay } from "../components/CityRegionOverlay";
+import { CameraControl } from "components/CameraControl";
 
 function Fog() {
   const ref = useRef();
@@ -37,8 +39,17 @@ function Fog() {
     </mesh>
   );
 }
+function Box() {
+  return (
+    <mesh position={[0, -20, -20]}>
+      <boxBufferGeometry attach="geometry" />
+      <meshLambertMaterial attach="material" color="hotpink" />
+    </mesh>
+  );
+}
 
 const Home: NextPage = () => {
+  const [isShowObject, setIsShowObject] = useState<boolean>(false);
   return (
     <div className={styles.container}>
       <Head>
@@ -47,24 +58,23 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Suspense fallback={<LoadingSuspense />}>
-        <Canvas>
-          <OrbitControls
-            enablePan={true}
-            mouseButtons={{
-              LEFT: THREE.MOUSE.PAN,
-              MIDDLE: THREE.MOUSE.DOLLY,
-              RIGHT: THREE.MOUSE.ROTATE,
-            }}
+        <Canvas camera={{ position: [0, 0, 0] }}>
+          <PerspectiveCamera position={[0, 8.5, 0]} makeDefault />
+          <CameraControl
+            isShowObject={isShowObject}
+            onNotShow={() => setIsShowObject(false)}
+            onShow={() => setIsShowObject(true)}
           />
-          <Stars />
-          <ambientLight intensity={0.7} />
+          {/* <Stars /> */}
           {/* <spotLight position={[10, 15, 3]} angle={0.25} /> */}
           {/* <pointLight intensity={0.5} position={[0, 0, 1]} /> */}
           {/* <Fog /> */}
           {/* <Ocean /> */}
           {/* <CityObject /> */}
-          <CityRegionOverlay />
-          <ObjectModelOverlay />
+          {/* <Box /> */}
+          <ambientLight intensity={0.7} />
+          <CityRegionOverlay isShowRegion={!isShowObject} />
+          <ObjectModelOverlay isShowObject={isShowObject} />
           <TerrainPlane />
         </Canvas>
       </Suspense>

@@ -3,13 +3,14 @@ import { cityDetails } from "../constant";
 import { useMaskLoader, useTextureLoader } from "../hooks";
 import { useBadgeLoader } from "../hooks";
 import { CityRegion } from "./CityRegion";
-
-export const CityRegionOverlay = () => {
+interface Props {
+  isShowRegion: boolean;
+}
+export const CityRegionOverlay = ({ isShowRegion }: Props) => {
   //also include terrain highlight
   const { texture } = useTextureLoader();
   const { badge } = useBadgeLoader();
   const { mask } = useMaskLoader();
-  console.log(texture["piltover_zaun_highlight" as keyof object]);
   return (
     <mesh>
       {cityDetails.map((model, index) => {
@@ -22,6 +23,7 @@ export const CityRegionOverlay = () => {
             mask={mask.depth_z1}
             position={model.position}
             scale={model.scale}
+            isShowRegion={isShowRegion}
             rotation={model.rotation}
           />
         );

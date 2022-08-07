@@ -12,6 +12,7 @@ interface Props {
   mask: THREE.Texture;
   scale?: any;
   position?: any;
+  isShowRegion: boolean;
   rotation?: any;
 }
 
@@ -22,6 +23,7 @@ export const CityRegion = ({
   mask,
   scale,
   position,
+  isShowRegion,
   rotation,
 }: Props) => {
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -29,10 +31,10 @@ export const CityRegion = ({
   const { play_hover_region, play_ui_region_click, play_trans_zoom } =
     useAudioPlayer();
   useFrame(() => {
-    if (isHover && highlight && mesh?.current.opacity <= 0.8) {
-      mesh.current.opacity += 0.09;
+    if (isHover && highlight && mesh?.current.opacity <= 0.65) {
+      mesh.current.opacity += 0.06;
     } else if (!isHover && highlight && mesh?.current.opacity >= 0) {
-      mesh.current.opacity -= 0.08;
+      mesh.current.opacity -= 0.07;
     }
   });
   useEffect(() => {
@@ -52,7 +54,7 @@ export const CityRegion = ({
               play_trans_zoom();
             }}
             scale={scale}
-            position={position}
+            position={isShowRegion ? position : [0, -20, 0]}
             renderOrder={10}
           >
             <spriteMaterial attach="material" map={badge} />
@@ -65,9 +67,10 @@ export const CityRegion = ({
               }}
               onClick={(e) => {
                 play_ui_region_click();
+                play_trans_zoom();
               }}
               scale={scale}
-              position={position}
+              position={isShowRegion ? position : [0, -20, 0]}
             >
               <spriteMaterial attach="material" map={badge_hover} />
             </sprite>
@@ -77,7 +80,7 @@ export const CityRegion = ({
 
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, 0.01, 0]}
+        position={isShowRegion ? [0, 0.01, 0] : [0, -2, 0]}
         renderOrder={1}
       >
         <planeBufferGeometry attach="geometry" args={[18, 18, 1024, 1024]} />

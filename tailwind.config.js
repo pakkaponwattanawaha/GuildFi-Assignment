@@ -13,6 +13,15 @@ module.exports = {
         sub1: "#deeefc",
         sub2: "#ffeedb",
       },
+      animation: {
+        fade: "fadeOut 2s ease-in-out",
+      },
+      keyframes: (theme) => ({
+        fadeOut: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
+      }),
     },
   },
   plugins: [],

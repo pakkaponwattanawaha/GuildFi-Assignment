@@ -14,6 +14,7 @@ import { LoadingSuspense } from "../components/LoadingSuspense";
 import { ObjectModelOverlay } from "../components/ObjectModelOverlay";
 import { CityRegionOverlay } from "../components/CityRegionOverlay";
 import { CameraControl } from "components/CameraControl";
+import { WelcomeCover } from "components/WelcomeCover";
 
 function Fog() {
   const ref = useRef();
@@ -56,21 +57,22 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Suspense fallback={<LoadingSuspense />}>
-        <Canvas camera={{ position: [0, 0, 0] }}>
+        <WelcomeCover />
+        <Canvas className="z-1" camera={{ position: [0, 0, 0] }}>
           <PerspectiveCamera position={[0, 8.5, 0]} makeDefault />
           <CameraControl
             isShowObject={isShowObject}
             onNotShow={() => setIsShowObject(false)}
             onShow={() => setIsShowObject(true)}
           />
-          {/* <Stars /> */}
+          <Stars />
           {/* <spotLight position={[10, 15, 3]} angle={0.25} /> */}
           {/* <pointLight intensity={0.5} position={[0, 0, 1]} /> */}
           {/* <Fog /> */}
           {/* <Ocean /> */}
           {/* <CityObject /> */}
           {/* <Box /> */}
-          <ambientLight intensity={0.7} />
+          <ambientLight intensity={0.8} />
           <CityRegionOverlay isShowRegion={!isShowObject} />
           <ObjectModelOverlay isShowObject={isShowObject} />
           <TerrainPlane />

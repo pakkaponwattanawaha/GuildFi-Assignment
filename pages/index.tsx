@@ -58,7 +58,6 @@ const Home: NextPage = () => {
       </Head>
 
       <Suspense fallback={<LoadingSuspense />}>
-        <WelcomeCover />
         <Canvas className="z-0" camera={{ position: [0, 0, 0] }}>
           <PerspectiveCamera position={[0, 8.5, 0]} makeDefault />
           <CameraControl
@@ -78,6 +77,7 @@ const Home: NextPage = () => {
           <ObjectModelOverlay isShowObject={isShowObject} />
           <TerrainPlane />
         </Canvas>
+        <WelcomeCover />
       </Suspense>
     </div>
   );

@@ -13,13 +13,11 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
 
   const handlechange = () => {
     if (!isShowObject && cameraRef.current.getPolarAngle() > Math.PI / 4) {
-      //   console.log(isShowObject);
       onShow();
     } else if (
       isShowObject &&
       cameraRef.current.getPolarAngle() <= Math.PI / 4
     ) {
-      //   console.log(isShowObject);
       onNotShow();
     }
     if (camera.position.y <= 2) {

@@ -78,7 +78,7 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
       mouseButtons={{
         LEFT: THREE.MOUSE.PAN,
         MIDDLE: THREE.MOUSE.MIDDLE,
-        RIGHT: THREE.MOUSE.ROTATE,
+        RIGHT: THREE.MOUSE.RIGHT,
       }}
       onChange={() => handlechange()}
       dampingFactor={0.25}

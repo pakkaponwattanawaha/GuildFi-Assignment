@@ -4,7 +4,7 @@ export const LoadingSuspense = () => {
   const { progress } = useProgress();
   console.log(progress);
   return (
-    <div className="w-screen h-screen">
+    <div className="z-20 w-screen h-screen">
       {/* <div className="w-full loadingBackground"></div> */}
       <div className="p-3 text-center top-1/2  w-full absolute ">
         <h2 className="text-xl pb-2">{progress} % Loaded </h2>

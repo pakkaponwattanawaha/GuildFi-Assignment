@@ -14,10 +14,9 @@ export const WelcomeCover = () => {
   return (
     <div
       className={
-        "z-10 cursor-pointer absolute grid gap-24 p-24 bg-gray-900/30 text-center w-full h-full" +
-        (isEnter
-          ? "absolute grid gap-12 text-center w-full h-full transition duration-500 opacity-0  z-0"
-          : "")
+        isEnter
+          ? "cursor-pointer absolute grid gap-24 text-center w-full h-full transition duration-500 opacity-0 z-1"
+          : "cursor-pointer absolute grid gap-24 p-24 bg-gray-900/30 text-center w-full h-full z-10"
       }
       onClick={() => {
         setIsEnter(true);

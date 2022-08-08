@@ -13,6 +13,18 @@ export const NavBar = ({ account }: Props) => {
   };
   const { play_ui_generic_button_click, play_ui_button } = useAudioPlayer();
   // const [account, setAccount] = useState<string>("0x0");
+  const [isMute, setIsMute] = useState<boolean>(false);
+  const handleMuteButton = () => {
+    // const audio: any = document.querySelector("audio");
+    if (isMute) {
+      setIsMute(false);
+      // audio.muted = false;
+    } else {
+      setIsMute(true);
+      // audio.muted = true;
+      // audio.pause();
+    }
+  };
 
   return (
     <div className="absolute  w-screen h-[50px] md:w-[50px] md:h-screen z-50">
@@ -89,25 +101,32 @@ export const NavBar = ({ account }: Props) => {
               onPointerOver={(e) => {
                 play_ui_button();
               }}
+              onClick={() => {
+                play_ui_generic_button_click();
+                handleMuteButton();
+              }}
             >
-              <svg
-                height="25px"
-                viewBox="0 0 25 25"
-                width="25px"
-                x="0px"
-                y="0px"
-              >
-                <path d="M8.5,10.1H6.1v4.8h2.4l2.4,2.4h1.6V7.7h-1.6L8.5,10.1z M14.1,14.9h1.6v-4.8h-1.6V14.9z M17.3,8.5v8h1.6v-8 H17.3z"></path>
-              </svg>
-              {/* <svg
-                height="25px"
-                viewBox="0 0 25 25"
-                width="25px"
-                x="0px"
-                y="0px"
-              >
-                <path d="M8.3,10H7.5v5.1H10l2.5,2.6h1.7v-0.9l-5.8-6V10z M14.2,11.3V7.4h-1.7l-1.1,1.1L8.7,5.7L7.5,6.9l2.8,2.8L10,10 l4.2,4.3v-0.5l2.2,2.2l1.2-1.2L14.2,11.3z"></path>
-              </svg> */}
+              {isMute ? (
+                <svg
+                  height="25px"
+                  viewBox="0 0 25 25"
+                  width="25px"
+                  x="0px"
+                  y="0px"
+                >
+                  <path d="M8.5,10.1H6.1v4.8h2.4l2.4,2.4h1.6V7.7h-1.6L8.5,10.1z M14.1,14.9h1.6v-4.8h-1.6V14.9z M17.3,8.5v8h1.6v-8 H17.3z"></path>
+                </svg>
+              ) : (
+                <svg
+                  height="25px"
+                  viewBox="0 0 25 25"
+                  width="25px"
+                  x="0px"
+                  y="0px"
+                >
+                  <path d="M8.3,10H7.5v5.1H10l2.5,2.6h1.7v-0.9l-5.8-6V10z M14.2,11.3V7.4h-1.7l-1.1,1.1L8.7,5.7L7.5,6.9l2.8,2.8L10,10 l4.2,4.3v-0.5l2.2,2.2l1.2-1.2L14.2,11.3z"></path>
+                </svg>
+              )}
             </button>
             {!account ? (
               <button

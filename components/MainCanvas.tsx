@@ -14,7 +14,7 @@ import { CameraControl } from "components/CameraControl";
 function Fog() {
   return (
     <mesh rotation={[0, 0, 0]}>
-      <Cloud width={8} position={[0, 3, 0]} speed={0.2} opacity={0.1} />
+      <Cloud width={13} position={[0, 3, -3]} speed={0.3} opacity={0.15} />
     </mesh>
   );
 }

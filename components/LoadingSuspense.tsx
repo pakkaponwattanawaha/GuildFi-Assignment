@@ -5,7 +5,7 @@ export const LoadingSuspense = () => {
   console.log(progress);
   return (
     <Html>
-      <div className="z-10 w-screen h-screen">
+      <div className="z-20 w-screen h-screen">
         <div className="p-3 text-center top-1/2  w-full absolute ">
           <h2 className="text-xl pb-2">{progress} % Loaded </h2>
           <progress

@@ -15,7 +15,7 @@ export const WelcomeCover = () => {
     <div
       className={
         isEnter
-          ? "cursor-pointer absolute grid gap-24 text-center w-full h-full transition duration-500 opacity-0 z-1"
+          ? "cursor-pointer absolute grid gap-24 text-center w-full h-full transition duration-500 opacity-0 hidden"
           : "cursor-pointer absolute grid gap-24 p-24 bg-gray-900/30 text-center w-full h-full z-10"
       }
       onClick={() => {
@@ -27,7 +27,7 @@ export const WelcomeCover = () => {
           Explore & Discover
         </span>
         <img
-          className=" w-[300px] sm:w-[600px] h-fit justify-self-center "
+          className=" w-[250px] sm:w-[500px] h-fit justify-self-center "
           src="RuneterraLogo.png"
           alt=""
         />

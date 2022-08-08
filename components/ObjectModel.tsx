@@ -1,7 +1,7 @@
 import { useAudioPlayer } from "hooks";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
-import { Mesh, Vector3 } from "three";
+import { Mesh } from "three";
 
 interface Props {
   object: THREE.Group;

@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { objectDetails } from "../constant";
 import { useObjectLoader, useTextureLoader } from "../hooks";
 import { ObjectModel } from "./ObjectModel";
-import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 interface Props {
   isShowObject: boolean;

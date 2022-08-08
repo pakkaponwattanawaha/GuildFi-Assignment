@@ -4,7 +4,6 @@ import React from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useAudioPlayer, useMaskLoader } from "../hooks";
-import { meshBounds } from "@react-three/drei";
 interface Props {
   badge: THREE.Texture;
   badge_hover: THREE.Texture;

@@ -1,10 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { LoadingSuspense } from "./LoadingSuspense";
-import { Mesh, PlaneGeometry } from "three";
 import { Cloud, PerspectiveCamera, Stars } from "@react-three/drei";
 
-import { Water } from "three/examples/jsm/objects/Water.js";
 import { TerrainPlane } from "../components/TerrainPlane";
 
 import { ObjectModelOverlay } from "../components/ObjectModelOverlay";

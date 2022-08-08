@@ -1,6 +1,6 @@
 import { OrbitControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 interface Props {
   isShowObject: boolean;
@@ -24,17 +24,11 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
       cameraRef.current.target.y =
         cameraRef.current.target.y *
         Math.cos(cameraRef.current.getPolarAngle());
-      //   cameraRef.current.target.z =
-      //     cameraRef.current.target.z *
-      //     Math.sin(cameraRef.current.getPolarAngle());
       camera.position.setY(2);
     } else if (camera.position.y >= 10) {
       cameraRef.current.target.y =
         cameraRef.current.target.y *
         Math.cos(cameraRef.current.getPolarAngle());
-      //   cameraRef.current.target.z =
-      //     cameraRef.current.target.z *
-      //     Math.sin(cameraRef.current.getPolarAngle());
       camera.position.setY(10); //
     } else if (camera.position.x <= -5) {
       cameraRef.current.target.x = -5;
@@ -49,14 +43,11 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
       cameraRef.current.target.z = -8;
       camera.position.setZ(-8);
     }
-    // console.log(camera.position.x, cameraRef.current.target.x);
-    // console.log(camera.position.y);
   };
 
   useEffect(() => {
     window.addEventListener("wheel", (e) => {
       if (e.deltaY < 0 && cameraRef.current.getPolarAngle() <= Math.PI / 3.75) {
-        // console.log(cameraRef.current.target.y, cameraRef.current.target.z);
         cameraRef.current.target.y -= 0.1;
         cameraRef.current.target.z -= 0.3;
       }

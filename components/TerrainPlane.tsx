@@ -1,7 +1,3 @@
-import { usePlane } from "@react-three/cannon";
-import { useLoader } from "@react-three/fiber";
-import * as THREE from "three";
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { useMaskLoader, useTextureLoader } from "../hooks";
 
 export const TerrainPlane = () => {
@@ -10,7 +6,6 @@ export const TerrainPlane = () => {
   return (
     <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       <planeBufferGeometry attach="geometry" args={[18, 18, 1024, 1024]} />
-      {/* <meshLambertMaterial map={fog} transparent={true} /> */}
       <meshStandardMaterial
         map={texture.terrain_z1}
         displacementMap={mask.depth_z1}

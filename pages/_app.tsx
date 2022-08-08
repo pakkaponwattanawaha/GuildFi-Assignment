@@ -4,7 +4,7 @@ import { NavBar } from "components/NavBar";
 import { ReactNode, useState, useEffect } from "react";
 import { NextPage } from "next";
 import { ethers } from "ethers";
-import { WalletFallback } from "components/WalletFallback";
+import { WalletConnectFallback } from "components/WalletConnectFallback";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: () => ReactNode;
@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       {account ? (
         getLayout(<Component className="" {...pageProps} />)
       ) : (
-        <WalletFallback />
+        <WalletConnectFallback />
       )}
     </>
   );

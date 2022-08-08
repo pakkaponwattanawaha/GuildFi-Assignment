@@ -25,9 +25,6 @@ export const NavBar = ({ account }: Props) => {
         console.log("accounts", accounts);
       });
   };
-  const disconnectWallet = async () => {
-    window.ethereum.disconnect();
-  };
 
   return (
     <div className="absolute  w-screen h-[50px] md:w-[50px] md:h-screen z-50">

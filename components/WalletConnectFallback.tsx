@@ -1,6 +1,6 @@
 import React from "react";
 
-export const WalletFallback = () => {
+export const WalletConnectFallback = () => {
   return (
     <div className="z-20 w-screen h-screen">
       <div className="p-3 text-center top-1/2  w-full absolute ">

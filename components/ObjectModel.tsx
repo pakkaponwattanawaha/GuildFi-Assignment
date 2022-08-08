@@ -37,8 +37,12 @@ export const ObjectModel = ({
     document.body.style.cursor = isHover ? "pointer" : "auto";
     ref.current.metalness = isHover ? 2 : 0;
   }, [isHover]);
-  const { play_ui_button, play_trans_zoom, play_sidedrawer_open } =
-    useAudioPlayer();
+  const {
+    play_ui_button,
+    play_trans_zoom,
+    play_ui_generic_button_click,
+    play_sidedrawer_open,
+  } = useAudioPlayer();
   return (
     <mesh
       onPointerOver={(e) => {
@@ -50,6 +54,7 @@ export const ObjectModel = ({
       }}
       onClick={(e) => {
         setIsHover(true);
+        play_ui_generic_button_click();
         play_trans_zoom();
         play_sidedrawer_open();
       }}

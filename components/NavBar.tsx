@@ -1,7 +1,5 @@
-import { useThree } from "@react-three/fiber";
 import { useAudioPlayer } from "hooks";
-import React, { useEffect, useState } from "react";
-import { ethers } from "ethers";
+import React, { useState } from "react";
 
 declare let window: any;
 interface Props {
@@ -9,21 +7,26 @@ interface Props {
 }
 export const NavBar = ({ account }: Props) => {
   const openInNewTab = (url: string) => {
-    window.open(url, "_blank", "noopener,noreferrer");
+    window.open(url);
   };
   const { play_ui_generic_button_click, play_ui_button } = useAudioPlayer();
-  // const [account, setAccount] = useState<string>("0x0");
   const [isMute, setIsMute] = useState<boolean>(false);
   const handleMuteButton = () => {
-    // const audio: any = document.querySelector("audio");
     if (isMute) {
       setIsMute(false);
-      // audio.muted = false;
     } else {
       setIsMute(true);
-      // audio.muted = true;
-      // audio.pause();
     }
+  };
+  const connectWallet = async () => {
+    window.ethereum
+      .request({ method: "eth_requestAccounts" })
+      .then((accounts: any) => {
+        console.log("accounts", accounts);
+      });
+  };
+  const disconnectWallet = async () => {
+    window.ethereum.disconnect();
   };
 
   return (
@@ -106,7 +109,7 @@ export const NavBar = ({ account }: Props) => {
                 handleMuteButton();
               }}
             >
-              {isMute ? (
+              {!isMute ? (
                 <svg
                   height="25px"
                   viewBox="0 0 25 25"
@@ -136,7 +139,7 @@ export const NavBar = ({ account }: Props) => {
                 }}
                 onClick={() => {
                   play_ui_generic_button_click();
-                  // onClickConnect();
+                  connectWallet();
                 }}
               >
                 <svg
@@ -151,13 +154,12 @@ export const NavBar = ({ account }: Props) => {
               </button>
             ) : (
               <button
-                className="fill-red-200 hover:fill-red-300"
+                className="fill-[#c8aa6e] hover:fill-[#f0e6d2]"
                 onPointerOver={(e) => {
                   play_ui_button();
                 }}
                 onClick={() => {
                   play_ui_generic_button_click();
-                  // onClickDisconnect();
                 }}
               >
                 <svg

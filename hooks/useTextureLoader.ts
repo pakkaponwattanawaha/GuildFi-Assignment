@@ -26,6 +26,7 @@ export const useTextureLoader = () => {
     targon_highlight,
     terrain_z1,
     the_void,
+    beam,
   ] = useLoader(THREE.TextureLoader, [
     "texture/bilgewater_highlight.png",
     "texture/clouds.jpg",
@@ -47,6 +48,7 @@ export const useTextureLoader = () => {
     "texture/targon_highlight.png",
     "texture/terrain_z1.jpg",
     "texture/the-void.jpg",
+    "texture/beam.jpg",
   ]);
   return {
     texture: {
@@ -70,6 +72,7 @@ export const useTextureLoader = () => {
       targon_highlight,
       terrain_z1,
       the_void,
+      beam,
     },
   };
 };

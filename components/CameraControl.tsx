@@ -35,7 +35,6 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
       //   cameraRef.current.target.z =
       //     cameraRef.current.target.z *
       //     Math.sin(cameraRef.current.getPolarAngle());
-      console.log("did trigger this");
       camera.position.setY(10); //
     } else if (camera.position.x <= -5) {
       cameraRef.current.target.x = -5;

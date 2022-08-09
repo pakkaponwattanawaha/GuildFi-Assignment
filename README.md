@@ -88,18 +88,19 @@
       which in result will create an invinsible boundary effect
              
   #### Camera Movement
-    - panning
+  - panning
     
-    Normal panning of `<orbitalCamera>` work when moving mouse in x and y direction which result in moving the camera in Xc and Yc Axis
-    the problem with this movement is Xc and Yc is not always paraellel to the Terrain plane (which is the behavior we want)
-    We can use camera restriction to solve this problem for now.
+  Normal panning of `<OrbitControls>` work when moving mouse in x and y direction which result in moving the camera in Xc and Yc Axis.
+  The problem with this movement is Xc and Yc is not always paraellel to the Terrain plane (which is the behavior we want) .
+  We can use camera restriction to solve this problem for now.
    
-   - dollying
+  - dollying
    
-    Dollying action is a combination of Zooming + Focus Point Movement and is trigger when mouse scroll is register.
-    Noted that `<orbitalCamera>` will always pointing toward the focus point.
+  Dollying action is a combination of Zooming + Focus Point Movement and is trigger when mouse scroll is register.
+  Noted that `<OrbitControls>` will always pointing toward the focus point.
     
-  <img src="https://user-images.githubusercontent.com/54467698/183704100-d51c3a8d-f1be-420a-ade6-ef844c431b51.png" alt="drawing" width="700"/>
+  <img src="https://user-images.githubusercontent.com/54467698/183734803-4e8b1569-7043-44be-83d7-c237a19baa68.png" alt="drawing" width="700"/>
+
 
      
   As described in the figure the focus point will move in the focus point trajectory when mouse scroll is register.

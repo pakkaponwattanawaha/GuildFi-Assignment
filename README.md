@@ -26,16 +26,16 @@
 
  ## How to run
 
-    ```
-    npm install
-    and
-    npm run dev
+ `npm install`
+ 
+ `npm run dev `
+ 
+   or
+   
+ `yarn install`
+ 
+ `yarn dev`
 
-    # or
-    yarn install
-    and
-    yarn dev
-    ```
  ## Features
  ### Terrain Plane
  use `<meshStandardMaterial/>` component
@@ -148,7 +148,9 @@
  From our setup
  
   `Xc += Xp`
+  
   `Yc += Yp * Cosθ + Zp * Sinθ`
+  
   `Zc += Zp * Sinθ + Zp * Cosθ`
   
 And we will need a way to customized how dragging our mouse in x and y axis behave.

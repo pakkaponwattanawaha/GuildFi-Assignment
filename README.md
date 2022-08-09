@@ -8,11 +8,11 @@
      - [Stack Used](#stack-used)
      - [Library](#library)
    - [3D](#3d)
-     - [Main Plane](#main-plane)
+     - [Terrain Plane](#terrain-plane)
      - [City Region](#city-region)
      - [Model Object](#model-object)
      - [Camera](#camera)
- 
+   - [Improvement](#improvement)
  
  ## Application
  
@@ -20,10 +20,14 @@
  ### Library
  
  ## Features
- ### Main Plane
+ ### Terrain Plane
+ use `<meshStandardMaterial/>` component
+ 
  ### City Region
+ use `<meshStandardMaterial/>` component to render region highlight
+ and `<sprite` component to render camera facing badge and city name
  ### Model Object
-  render 3d object model on the plane
+  render 3d object model on `<meshStandardMaterial/>` and place it on the Terrain Plane
   
  ### Camera
  Camera is the perspective view point of the application. We can look at it like an object orbiting the assigned focus coordination
@@ -31,11 +35,11 @@
  
  We will need to assign variable for the coordinate
  
- let  ` Xc, Yc, Zc is the [x,y,z] coordinate of the camera relative to its original coordinate`
+ let  ` Xc, Yc, Zc is the x,y,z coordinate of the camera relative to its original coordinate`
  
- let  ` Xp, Yp, Zp is the [x,y,z] coordinate of the camera relative to the Main plane`
+ let  ` Xp, Yp, Zp is the x,y,z coordinate of the camera relative to the Terrain Plane`
  
- let ` θ is the polar angle of camera to the Z-Axis of the main plane `
+ let ` θ is the polar angle of camera to the Z-Axis of the Terrain Plane `
  
  and for this specific setup notice that `Xc = Xp`
  
@@ -45,7 +49,10 @@
              
   - Camera Movement
     - scrolling
+     scrolling action will trigger the camera movement in Yc and Zc Axis 
+     and when combining with the zooming action ( the orbital target Z-Axis)
     - panning
+    normal panning of `<orbitalCamera>` moveing mouse in x and y direction will move the component in Xc and Yc which is not always paraellel with the Terrain Plane. So, we need the camera restriction logic.
   - Camera Restriction
   for camera restriction we will defined the restriction boundary cube to limit camera movement
   When the camera collide with the boundary the position Xp, Yp, Zp will be set to the boundary
@@ -54,6 +61,7 @@
   Ex. for Y axis we will be setting Yp to the restriction boundary and `Yc = Yc * Cosθ`
   
   - Camera Breakpoint
+   when the viewing angle is more than 45 degree the Object will be shown on the plane instead of CityRegion
   
  ### Misc. features 
   - sound - Interactive UI sound player
@@ -62,6 +70,10 @@
   - Loading Screen - percentage of resource loaded
   - Welcome overlay - Welcome screen for entering the site
  
+ 
+### Imporvement
+## Ideal Camera movement
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

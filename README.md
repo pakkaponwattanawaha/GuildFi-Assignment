@@ -126,11 +126,14 @@
    
   - Loading Screen - percentage of resource loaded
   
+  
+ <img width="400" alt="Screen Shot 2565-08-10 at 05 44 18" src="https://user-images.githubusercontent.com/54467698/183774494-7bc6e613-8a55-4db0-9678-81a61dd64b9d.png">
+ 
   - Welcome Overlay - Welcome screen for entering the site
   
   <img width="400" alt="Screen Shot 2565-08-10 at 00 20 14" src="https://user-images.githubusercontent.com/54467698/183716910-c844776f-f3c4-4ad8-8ff2-b328c11fc9f3.png">
 
- 
+
 
 
 ### Improvements

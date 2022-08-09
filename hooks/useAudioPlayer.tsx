@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useSound from "use-sound";
+
 export const useAudioPlayer = () => {
   const play_trans_intro = () => {
     const audio = new Audio("sfx/sfx-trans-intro-01.mp3");

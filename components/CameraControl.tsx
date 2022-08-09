@@ -32,7 +32,7 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
       cameraRef.current.target.y =
         cameraRef.current.target.y *
         Math.cos(cameraRef.current.getPolarAngle());
-      camera.position.setY(10); //
+      camera.position.setY(10);
     } else if (camera.position.x <= -5) {
       cameraRef.current.target.x = -5;
       camera.position.setX(-5);
@@ -52,14 +52,16 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
     //Dolly action on wheel
     window.addEventListener("wheel", (e) => {
       if (e.deltaY < 0 && cameraRef.current.getPolarAngle() <= Math.PI / 3.75) {
-        cameraRef.current.target.y -= 0.1;
-        cameraRef.current.target.z -= 0.3;
+        cameraRef.current.target.y -=
+          0.1 * Math.cos(cameraRef.current.getPolarAngle());
+        cameraRef.current.target.z -=
+          0.2 * Math.cos(cameraRef.current.getPolarAngle());
       }
       if (e.deltaY > 0 && cameraRef.current.getPolarAngle() <= Math.PI / 2) {
         cameraRef.current.target.y +=
-          0.1 * Math.cos(cameraRef.current.getPolarAngle());
+          0.1 * Math.sin(cameraRef.current.getPolarAngle());
         cameraRef.current.target.z +=
-          0.4 * Math.sin(cameraRef.current.getPolarAngle());
+          0.3 * Math.sin(cameraRef.current.getPolarAngle());
       }
       handlechange();
     });

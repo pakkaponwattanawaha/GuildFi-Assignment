@@ -6,26 +6,31 @@
 
    - [Application](#application)
      - [Stack Used](#stack-used)
-     - [Library](#library)
      - [How to run](#how-to-run)
-   - [3D](#3d)
+   - [Features](#features)
      - [Terrain Plane](#terrain-plane)
      - [City Region](#city-region)
      - [Model Object](#model-object)
      - [Camera](#camera)
-   - [Improvement](#improvement)
+     - [Misc Features](#misc-features)
+   - [Improvements](#improvements)
+   
  
  ## Application
  
  ### Stack Used
- ### Library
- ## How to run
+  - Framework - Next.js + Typescript
+  - Styling - Tailwind CSS
+  - 3D - Three.js + @react-three/fiber + @react-three/drei
+  - web3 - ethers.js
 
+ ## How to run
 
     ```
     npm install
     and
     npm run dev
+
     # or
     yarn install
     and
@@ -35,11 +40,19 @@
  ### Terrain Plane
  use `<meshStandardMaterial/>` component
  
+ <img width="500" alt="Screen Shot 2565-08-10 at 00 19 39" src="https://user-images.githubusercontent.com/54467698/183716071-f2f3f281-30e6-4353-8a54-eccb670a8b5b.png">
+
  ### City Region
  use `<meshStandardMaterial/>` component to render region highlight
  and `<sprite/>` component to render camera facing badge and city name
+ 
+ <img width="500" alt="Screen Shot 2565-08-10 at 00 15 50" src="https://user-images.githubusercontent.com/54467698/183715581-010a92ae-1ef6-4618-a59a-2b6df14377be.png">
+
+
  ### Model Object
   render 3d object model on `<meshStandardMaterial/>` and place it on the Terrain Plane
+  
+  <img width="500" alt="Screen Shot 2565-08-10 at 00 16 07" src="https://user-images.githubusercontent.com/54467698/183715544-fc9a209b-3f03-449b-9a38-539a24c53be0.png">
   
  ### Camera
  Camera is the perspective view point of the application.It is you point of view when using the application. We can look at it like an object orbiting a point (this point is refer as focus point)
@@ -51,7 +64,7 @@
  
  let  ` Xp, Yp, Zp = the x,y,z coordinate of the camera relative to the Terrain Plane`
  
- let ` θ is the polar angle of camera to the Z-Axis of the Terrain Plane `
+ let  ` θ is the polar angle of camera to the Z-Axis of the Terrain Plane `
  
  and for this specific setup notice that `Xc = Xp` .
  
@@ -96,24 +109,49 @@
   I also added the cosθ and sinθ bias to make the action smoother.
   
   #### Camera Breakpoint
-   when the polar angle θ is more than 45 degree the ObjectModel will be shown on the plane instead of CityRegion
+   when the polar angle `θ > 45 degree` the ObjectModel will be shown on the plane instead of CityRegion
   
  ### Misc. features 
   - sound - Interactive UI sound player
   - Wallet connection - require wallet connection to use the application
-  - Responsive Design - work for all screen size
-  - Loading Screen - percentage of resource loaded
-  - Welcome Overlay - Welcome screen for entering the site
- 
- 
-### Improvement
-#### Misc. features
- - a lot could be added here ex.auto zoom ,mute, city text, cloud ,ocean , more detail in overlay (z2 details)
-#### Ideal Camera movement
-  As mentioned earlier the panning action of the camera still not perfect. To achieve that we will need to customized how dragging out mouse in x and y axis behave.
   
+  <img width="400" alt="Screen Shot 2565-08-10 at 00 20 50" src="https://user-images.githubusercontent.com/54467698/183717140-faa1c7d1-7a36-4fae-a772-d58462321f1a.png">
+
+  
+  - Responsive Design - work for all screen size
+  
+   <img width="150" alt="Screen Shot 2565-08-10 at 00 23 42" src="https://user-images.githubusercontent.com/54467698/183717601-a10df38d-73cc-4c11-9ee4-54d934ed7f15.png">
+   
+  - Loading Screen - percentage of resource loaded
+  
+  - Welcome Overlay - Welcome screen for entering the site
+  
+  <img width="400" alt="Screen Shot 2565-08-10 at 00 20 14" src="https://user-images.githubusercontent.com/54467698/183716910-c844776f-f3c4-4ad8-8ff2-b328c11fc9f3.png">
+
  
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+### Improvements
+#### Misc. features
+ 
+ - auto zoom to regions -> need state management system like redux to reference camera position
+ - mute
+ - ocean effect
+ - highly detailed terrain -> render higher quality terrain in each area at camera breakpoint 
+
+#### Ideal Camera movement
+  As mentioned earlier the panning action of the camera still not perfect. It should be moving in paraellel with the Terrain plane. 
+  This could be achieve with cartesian vector 
+  
+   <img src="https://user-images.githubusercontent.com/54467698/183725321-ecd068e6-109a-4a79-b68a-831f7a426cd2.png" alt="drawing" width="400"/>
+
+ From our setup
+ 
+  `Xc += Xp`
+  `Yc += Yp * Cosθ + Zp * Sinθ`
+  `Zc += Zp * Sinθ + Zp * Cosθ`
+  
+And we will need a way to customized how dragging our mouse in x and y axis behave.
+Which I couldn't figure it out yet.
+ 
 

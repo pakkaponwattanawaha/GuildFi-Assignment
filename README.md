@@ -46,16 +46,17 @@
  use `<meshStandardMaterial/>` component to render region highlight
  and `<sprite/>` component to render camera facing badge and city name
  
- <img width="500" alt="Screen Shot 2565-08-10 at 00 15 50" src="https://user-images.githubusercontent.com/54467698/183715581-010a92ae-1ef6-4618-a59a-2b6df14377be.png">
+ <img width="400" alt="Screen Shot 2565-08-10 at 00 15 50" src="https://user-images.githubusercontent.com/54467698/183715581-010a92ae-1ef6-4618-a59a-2b6df14377be.png">
 
 
  ### Model Object
   render 3d object model on `<meshStandardMaterial/>` and place it on the Terrain Plane
   
-  <img width="500" alt="Screen Shot 2565-08-10 at 00 16 07" src="https://user-images.githubusercontent.com/54467698/183715544-fc9a209b-3f03-449b-9a38-539a24c53be0.png">
-  
+ <img width="400" alt="Screen Shot 2565-08-10 at 01 09 43" src="https://user-images.githubusercontent.com/54467698/183728596-784bdfb4-db22-4ef1-bd53-3ef8d88ad28b.png">
+ 
  ### Camera
- Camera is the perspective view point of the application.It is you point of view when using the application. We can look at it like an object orbiting a point (this point is refer as focus point)
+ Camera is the perspective view point of the application.It is your point of view when using the application. 
+ We can look at it like an object orbiting a point (this point is refer as focus point)
  Camera has its own positional coordination which is referenced to it's original coordinate .
  
  We will need to declare variable for each coordinate value.
@@ -89,7 +90,7 @@
   #### Camera Movement
     - panning
     
-    normal panning of `<orbitalCamera>` work when moving mouse in x and y direction which result in moving the camera in Xc and Yc Axis
+    Normal panning of `<orbitalCamera>` work when moving mouse in x and y direction which result in moving the camera in Xc and Yc Axis
     the problem with this movement is Xc and Yc is not always paraellel to the Terrain plane (which is the behavior we want)
     We can use camera restriction to solve this problem for now.
    
@@ -109,10 +110,10 @@
   I also added the cosθ and sinθ bias to make the action smoother.
   
   #### Camera Breakpoint
-   when the polar angle `θ > 45 degree` the ObjectModel will be shown on the plane instead of CityRegion
+   When the polar angle `θ > 45 degree` the ObjectModel will be shown on the plane instead of CityRegion
   
  ### Misc. features 
-  - sound - Interactive UI sound player
+  - Sound - Interactive UI sound player
   - Wallet connection - require wallet connection to use the application
   
   <img width="400" alt="Screen Shot 2565-08-10 at 00 20 50" src="https://user-images.githubusercontent.com/54467698/183717140-faa1c7d1-7a36-4fae-a772-d58462321f1a.png">

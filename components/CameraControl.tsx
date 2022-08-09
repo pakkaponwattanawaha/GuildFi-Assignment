@@ -12,6 +12,7 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
   const cameraRef = useRef<any>();
 
   const handlechange = () => {
+    //Angle break point
     if (!isShowObject && cameraRef.current.getPolarAngle() > Math.PI / 4) {
       onShow();
     } else if (
@@ -20,6 +21,8 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
     ) {
       onNotShow();
     }
+
+    //Panning Restriction
     if (camera.position.y <= 2) {
       cameraRef.current.target.y =
         cameraRef.current.target.y *
@@ -46,6 +49,7 @@ export const CameraControl = ({ isShowObject, onShow, onNotShow }: Props) => {
   };
 
   useEffect(() => {
+    //Dolly action on wheel
     window.addEventListener("wheel", (e) => {
       if (e.deltaY < 0 && cameraRef.current.getPolarAngle() <= Math.PI / 3.75) {
         cameraRef.current.target.y -= 0.1;

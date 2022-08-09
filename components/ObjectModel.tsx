@@ -22,6 +22,8 @@ export const ObjectModel = ({
 }: Props) => {
   const ref = useRef<any>();
   const [isHover, setIsHover] = useState<boolean>(false);
+
+  //Load geometry texture on the mesh Object
   const geometry = useMemo(() => {
     let g;
     object.traverse((c) => {
@@ -37,12 +39,14 @@ export const ObjectModel = ({
     document.body.style.cursor = isHover ? "pointer" : "auto";
     ref.current.metalness = isHover ? 2 : 0;
   }, [isHover]);
+
   const {
     play_ui_button,
     play_trans_zoom,
     play_ui_generic_button_click,
     play_sidedrawer_open,
   } = useAudioPlayer();
+
   return (
     <mesh
       onPointerOver={(e) => {

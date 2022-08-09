@@ -23,14 +23,14 @@ export const MainCanvas = () => {
       <Canvas camera={{ position: [0, 0, 0] }}>
         <Suspense fallback={<LoadingSuspense />}>
           <color attach="background" args={["black"]} />
+          {/* <Fog /> */}
+          <Stars />
           <PerspectiveCamera position={[0, 8.5, 0]} makeDefault />
           <CameraControl
             isShowObject={isShowObject}
             onNotShow={() => setIsShowObject(false)}
             onShow={() => setIsShowObject(true)}
           />
-          <Stars />
-          {/* <Fog /> */}
           <ambientLight intensity={0.8} />
           <CityRegionOverlay isShowRegion={!isShowObject} />
           <ObjectModelOverlay isShowObject={isShowObject} />

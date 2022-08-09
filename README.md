@@ -25,7 +25,7 @@
  
  ### City Region
  use `<meshStandardMaterial/>` component to render region highlight
- and `<sprite` component to render camera facing badge and city name
+ and `<sprite/>` component to render camera facing badge and city name
  ### Model Object
   render 3d object model on `<meshStandardMaterial/>` and place it on the Terrain Plane
   

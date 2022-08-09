@@ -15,8 +15,8 @@ export const WelcomeCover = () => {
     <div
       className={
         isEnter
-          ? "cursor-pointer absolute grid gap-24 text-center w-full h-full transition duration-500 opacity-0 hidden"
-          : "cursor-pointer absolute grid gap-24 p-24 bg-gray-900/30 text-center w-full h-full z-10"
+          ? "cursor-pointer absolute grid gap-20 pt-[140px]  text-center w-full h-full transition duration-500 opacity-0 hidden"
+          : "cursor-pointer absolute grid gap-20 pt-[140px]  text-center w-full h-full bg-gray-900/30 z-10"
       }
       onClick={() => {
         setIsEnter(true);
@@ -34,7 +34,7 @@ export const WelcomeCover = () => {
       </div>
 
       <button
-        className="mt-24 welcome-button border-2 border-[#c8aa6e] hover:border-[#e3c07b]  font-medium p-1 w-[195px] h-[58px] justify-self-center"
+        className="mt-20 welcome-button border-2 border-[#c8aa6e] hover:border-[#e3c07b]  text-sm font-medium p-1 w-[195px] h-[58px] justify-self-center"
         onClick={() => {
           setIsEnter(true);
         }}

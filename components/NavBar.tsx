@@ -95,7 +95,7 @@ export const NavBar = ({ account }: Props) => {
               </svg>
             </button>
           </div>
-          <div className="flex md:flex-col items-center self-center gap-5 md:gap-8 mx-3 md:mx-0 my-0 md:my-3">
+          <div className="flex md:flex-col items-center self-center gap-8 md:gap-8 mx-2 md:mx-0 my-0 md:my-3">
             <button
               className="fill-[#c8aa6e] hover:fill-[#f0e6d2] curson-pointer"
               onPointerOver={(e) => {

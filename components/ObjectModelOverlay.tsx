@@ -10,7 +10,9 @@ export const ObjectModelOverlay = ({ isShowObject }: Props) => {
   const { texture } = useTextureLoader();
   const { obj } = useObjectLoader();
   const beamRef = useRef<any>();
-  useFrame(() => (beamRef.current.rotation.y += 0.2));
+  useFrame(() => {
+    beamRef.current.rotation.y += 0.05;
+  });
   return (
     <mesh>
       {objectDetails.map((model, index) => {
@@ -34,14 +36,14 @@ export const ObjectModelOverlay = ({ isShowObject }: Props) => {
       >
         <cylinderBufferGeometry
           attach="geometry"
-          args={[0.002, 0.002, 28, 6]}
+          args={[0.004, 0.004, 28, 5]}
         />
         <meshStandardMaterial
           attach="material"
           map={texture.beam}
           transparent={true}
-          opacity={0.9}
-          metalness={80}
+          opacity={0.7}
+          metalness={9.25}
         />
       </mesh>
     </mesh>

@@ -1,3 +1,67 @@
+# GuildFi assignment Frontend web3
+
+ - Deployment URL: https://guild-fi-assignment.vercel.app/
+                  
+### Table of content
+
+   - [Application](#application)
+     - [Stack Used](#stack-used)
+     - [Library](#library)
+   - [3D](#3d)
+     - [Main Plane](#main-plane)
+     - [City Region](#city-region)
+     - [Model Object](#model-object)
+     - [Camera](#camera)
+ 
+ 
+ ## Application
+ 
+ ### Stack Used
+ ### Library
+ 
+ ## Features
+ ### Main Plane
+ ### City Region
+ ### Model Object
+  render 3d object model on the plane
+  
+ ### Camera
+ Camera is the perspective view point of the application. We can look at it like an object orbiting the assigned focus coordination
+ Camera has its own positional coordination which is referenced to it's original coordinate .
+ 
+ We will need to assign variable for the coordinate
+ 
+ let  ` Xc, Yc, Zc is the [x,y,z] coordinate of the camera relative to its original coordinate`
+ 
+ let  ` Xp, Yp, Zp is the [x,y,z] coordinate of the camera relative to the Main plane`
+ 
+ let ` θ is the polar angle of camera to the Z-Axis of the main plane `
+ 
+ and for this specific setup notice that `Xc = Xp`
+ 
+ Then we would have something like this
+ ![image](https://user-images.githubusercontent.com/54467698/183620787-cfd2d6af-8742-4acc-8c0d-cd252644445a.png)
+
+             
+  - Camera Movement
+    - scrolling
+    - panning
+  - Camera Restriction
+  for camera restriction we will defined the restriction boundary cube to limit camera movement
+  When the camera collide with the boundary the position Xp, Yp, Zp will be set to the boundary
+  
+    ![image](https://user-images.githubusercontent.com/54467698/183627364-bbbdd0a3-3d1c-4a0b-812f-d22281aee340.png)
+  Ex. for Y axis we will be setting Yp to the restriction boundary and `Yc = Yc * Cosθ`
+  
+  - Camera Breakpoint
+  
+ ### Misc. features 
+  - sound - Interactive UI sound player
+  - Wallet connection - require wallet connection to use the applicaion
+  - Responsive Design - work for all screen size
+  - Loading Screen - percentage of resource loaded
+  - Welcome overlay - Welcome screen for entering the site
+ 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -7,24 +7,24 @@ interface Props {
   isShowRegion: boolean;
 }
 export const CityRegionOverlay = ({ isShowRegion }: Props) => {
-  //also include terrain highlight
   const { texture } = useTextureLoader();
   const { badge } = useBadgeLoader();
   const { mask } = useMaskLoader();
   return (
     <mesh>
-      {cityDetails.map((model, index) => {
+      {cityDetails.map((city, index) => {
         return (
           <CityRegion
             key={index}
-            badge={badge[model.name as keyof object]}
-            badge_hover={badge[(model.name + "_hover") as keyof object]}
-            highlight={texture[(model.name + "_highlight") as keyof object]}
+            name={city.name}
+            badge={badge[city.name as keyof object]}
+            badge_hover={badge[(city.name + "_hover") as keyof object]}
+            highlight={texture[(city.name + "_highlight") as keyof object]}
             mask={mask.depth_z1}
-            position={model.position}
-            scale={model.scale}
+            position={city.position}
+            scale={city.scale}
             isShowRegion={isShowRegion}
-            rotation={model.rotation}
+            rotation={city.rotation}
           />
         );
       })}

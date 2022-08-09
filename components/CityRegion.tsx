@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import React from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useAudioPlayer, useMaskLoader } from "../hooks";
 interface Props {
+  name: string;
   badge: THREE.Texture;
   badge_hover: THREE.Texture;
   highlight?: THREE.Texture;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export const CityRegion = ({
+  name,
   badge,
   badge_hover,
   highlight,
@@ -39,6 +41,23 @@ export const CityRegion = ({
   useEffect(() => {
     document.body.style.cursor = isHover ? "pointer" : "auto";
   }, [isHover]);
+
+  const text = useMemo(() => {
+    const fontsize = 35;
+    const borderThickness = 4;
+
+    const canvas = document.createElement("canvas");
+    const context: any = canvas.getContext("2d");
+    context.textBaseline = "middle";
+    context.font = `bold ${35}px  Times, serif, BlinkMacSystemFont,`;
+    let textWidth = 35;
+
+    context.lineWidth = borderThickness;
+    context.fillStyle = "white";
+    context.fillText(name, textWidth - textWidth * 0.6, fontsize);
+    return canvas;
+  }, [name]);
+
   return (
     <>
       <group renderOrder={10}>
@@ -75,6 +94,18 @@ export const CityRegion = ({
             </sprite>
           </>
         )}
+        <sprite
+          scale={[3, 1.5, 1.5]}
+          position={
+            isShowRegion
+              ? [position[0] + 1.75, position[1], position[2] + 0.55]
+              : [0, -20, 0]
+          }
+        >
+          <spriteMaterial attach="material" transparent alphaTest={0.45}>
+            <canvasTexture attach="map" image={text} />
+          </spriteMaterial>
+        </sprite>
       </group>
 
       <mesh
